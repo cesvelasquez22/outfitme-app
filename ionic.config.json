@@ -1,0 +1,7 @@
+{
+  "name": "outfitme-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
