@@ -22,6 +22,10 @@
       "es2018", 
       "dom"
     ],
+    "types": [
+      "jest"
+    ],
+    "esModuleInterop": true,
     "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
