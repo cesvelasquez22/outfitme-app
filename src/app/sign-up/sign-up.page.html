@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true" scrollY="false" [class]="backgroundClass" class="ion-padding">
+  <ion-grid fixed>
+    <!-- <ion-row class="ion-justify-content-end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-row> -->
+    <ion-row>
+      <h4 style="text-align: center;">Comienza haciendo outfits asombrosos!</h4>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button id="open-form" expand="block">Crear cuenta</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+  <ion-modal #modal trigger="open-form" [initialBreakpoint]="1" [breakpoints]="[0]">
+    <ng-template>
+      <ion-content>
+        <app-sign-up-form></app-sign-up-form>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>
