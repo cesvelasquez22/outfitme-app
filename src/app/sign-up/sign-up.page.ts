@@ -21,14 +21,13 @@ export class SignUpPage implements OnInit {
 
   randomMin = 1;
   randomMax = 4;
-  randomBackground = Math.floor(Math.random() * (this.randomMax - this.randomMin + 1)) + this.randomMin;
+  randomBackground =
+    Math.floor(Math.random() * (this.randomMax - this.randomMin + 1)) +
+    this.randomMin;
   readonly backgroundClass = `sign-up-bg-${this.randomBackground}`;
   constructor() {}
 
-  ngOnInit() {
-    console.log({ randomBackground: this.randomBackground })
-  }
-
+  ngOnInit() {}
 
   register(user: User) {
     if (!user.email || !user.password || !user.confirmPassword) {
