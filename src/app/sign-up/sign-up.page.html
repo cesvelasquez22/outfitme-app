@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true" scrollY="false" [class]="backgroundClass" class="ion-padding">
   <ion-grid fixed>
     <ion-row>
-      <h4 style="text-align: center;">Comienza organizando tu guadarropa!</h4>
+      <h4 style="text-align: center; color: white;">Comienza organizando tu guadarropa!</h4>
     </ion-row>
     <ion-row>
       <ion-col size="12">
@@ -26,8 +26,8 @@
     </ion-row>
     <ion-row>
       <ion-col size="12">
-        <h6 style="text-align: center;">
-          ¿Ya tienes una cuenta? <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active" style="text-decoration: none; color: var(--ion-color-secondary);">Ingresar</a>
+        <h6 style="text-align: center; color: white;">
+          ¿Ya tienes una cuenta? <a [routerLink]="['/sign-in']" routerLinkActive="router-link-active" style="text-decoration: none; color: var(--ion-color-primary);">Ingresar</a>
         </h6>
       </ion-col>
     </ion-row>
@@ -36,7 +36,7 @@
 
   <ion-modal #modal trigger="sign-up-form" [initialBreakpoint]="1" [breakpoints]="[0,1]">
     <ng-template>
-      <ion-content>
+      <ion-content class="ion-padding">
         <app-sign-up-form></app-sign-up-form>
       </ion-content>
     </ng-template>
