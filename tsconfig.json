@@ -18,6 +18,20 @@
     "importHelpers": true,
     "target": "es2022",
     "module": "es2020",
+    "paths": {
+      "@pages/*": [
+        "src/app/pages/*"
+      ],
+      "@shared/*": [
+        "src/app/@shared/*"
+      ],
+      "@auth/*": [
+        "src/app/@auth/*"
+      ],
+      "@storage/*": [
+        "src/app/@storage/*"
+      ],
+    },
     "lib": [
       "es2018", 
       "dom"
