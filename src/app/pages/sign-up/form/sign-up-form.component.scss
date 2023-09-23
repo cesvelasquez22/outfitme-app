@@ -1,0 +1,39 @@
+.sign-up-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  header {
+    display: block;
+    order: 0;
+    z-index: 10;
+    width: 100%;
+    margin-bottom: 1rem;
+    position: relative;
+
+    ion-img {
+      width: 7rem;
+      margin: 0 auto;
+    }
+
+    ion-button#dismiss {
+      position: fixed;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 0.5rem;
+
+    ion-note {
+      --color: var(--ion-color-danger);
+      padding-left: 1rem;
+      font-size: 10px;
+    }
+  }
+}
