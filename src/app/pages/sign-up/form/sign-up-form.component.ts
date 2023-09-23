@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/@auth';
-import { FormValidators } from 'src/app/shared/validators';
+import { FormValidators } from '@shared/validators';
 
 @Component({
   selector: 'app-sign-up-form',

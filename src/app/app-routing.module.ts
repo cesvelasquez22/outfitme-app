@@ -11,15 +11,15 @@ const routes: Routes = [
   // TODO: Separate by auth guard
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('@pages/home').then( m => m.HomePageModule)
   },
   {
     path: 'sign-up',
-    loadChildren: () => import('./sign-up/sign-up.module').then( m => m.SignUpPageModule)
+    loadChildren: () => import('@pages/sign-up').then( m => m.SignUpPageModule)
   },
   {
     path: 'sign-in',
-    loadChildren: () => import('./sign-in/sign-in.module').then( m => m.SignInPageModule)
+    loadChildren: () => import('@pages/sign-in').then( m => m.SignInPageModule)
   },
 ];
 

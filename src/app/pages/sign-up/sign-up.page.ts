@@ -30,7 +30,6 @@ export class SignUpPage {
   constructor(private readonly router: Router) {}
 
   onDidDismiss($event: ModalCustomEvent) {
-    console.log({ $event });
     const { data, role } = $event.detail;
     if (data && data.signedUp && role === 'user') {
       this.router.navigate(['/signed-in-redirect']);
