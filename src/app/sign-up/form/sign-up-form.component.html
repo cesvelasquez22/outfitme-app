@@ -64,6 +64,7 @@
         <ion-button type="submit" expand="block" color="secondary" [disabled]="signUpForm.invalid">
             Comenzar
         </ion-button>
+        <ion-loading  message="Espere unos segundos..." [isOpen]="isLoading"></ion-loading>
     </form>
 </div>
 

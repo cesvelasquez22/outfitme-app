@@ -1,6 +1,7 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { AuthService } from 'src/app/@auth';
 import { FormValidators } from 'src/app/shared/validators';
 
 @Component({
@@ -9,20 +10,51 @@ import { FormValidators } from 'src/app/shared/validators';
   styleUrls: ['./sign-up-form.component.scss'],
 })
 export class SignUpFormComponent {
-  readonly signUpForm = new FormGroup({
-    email: new FormControl('', [Validators.required, Validators.email]),
-    fullName: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/),
-    ]),
-    confirmPassword: new FormControl('', [Validators.required]),
-    tos: new FormControl(false, [Validators.requiredTrue]),
-  }, { validators: FormValidators.mustMatch('password', 'confirmPassword', 8) });
+  readonly signUpForm = new FormGroup(
+    {
+      email: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required, Validators.email],
+      }),
+      fullName: new FormControl('', {
+        nonNullable: true,
+        validators: [Validators.required],
+      }),
+      password: new FormControl('', {
+        nonNullable: true,
+        validators: [
+          Validators.required,
+          Validators.pattern(
+            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
+          ),
+        ],
+      }),
+      confirmPassword: new FormControl('', [Validators.required]),
+      tos: new FormControl(false, [Validators.requiredTrue]),
+    },
+    { validators: FormValidators.mustMatch('password', 'confirmPassword', 8) }
+  );
 
-  constructor(readonly modalController: ModalController) {}
+  isLoading = false;
+
+  constructor(
+    readonly modalController: ModalController,
+    private readonly authService: AuthService,
+  ) {}
 
   onSubmit() {
-    console.log({ user: this.signUpForm.value });
+    this.signUpForm.disable();
+    this.isLoading = true;
+    const { email, fullName, password } = this.signUpForm.getRawValue();
+    this.authService.register({ email, fullName, password }).subscribe({
+      next: (user) => {
+        this.isLoading = false;
+        this.modalController.dismiss({ signedUp: true }, 'user', 'sign-up');
+      },
+      complete: () => {
+        this.isLoading = false;
+        this.signUpForm.enable();
+      },
+    });
   }
 }
