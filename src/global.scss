@@ -30,3 +30,10 @@
     font-family: 'Inter var';
     color-scheme: light dark;
 }
+
+ion-loading.custom-loading {
+    // --backdrop-opacity: 0.5;
+    --background: #ffffff;
+    --spinner-color: (var(--ion-color-tertiary));
+    // --width: 100%;
+}

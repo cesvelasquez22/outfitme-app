@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User, UserDto } from './user';
+import { User, CreateUserDto, Credentials } from './user';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject, tap } from 'rxjs';
 
@@ -35,7 +35,7 @@ export class AuthService {
     localStorage.setItem(this.USER, JSON.stringify(user));
   }
 
-  register(user: UserDto) {
+  register(user: CreateUserDto) {
     return this.httpClient
       .post<User>(`${environment.api}/auth/register`, user)
       .pipe(
@@ -45,7 +45,7 @@ export class AuthService {
       );
   }
 
-  login({ email, password }: UserDto) {
+  login({ email, password }: Credentials) {
     return this.httpClient
       .post<User>(`${environment.api}/auth/login`, {
         email,

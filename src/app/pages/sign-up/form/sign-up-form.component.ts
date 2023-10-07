@@ -1,60 +1,68 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AfterViewInit,
+  Component,
+  ViewChild,
+  computed,
+  signal,
+} from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '@auth/auth.service';
+import { CreateUserDto } from '@auth/user';
 import { ModalController } from '@ionic/angular';
-import { AuthService } from 'src/app/@auth';
-import { FormValidators } from '@shared/validators';
+import { finalize } from 'rxjs';
+import { userValidations } from '@auth/user.validations';
 
 @Component({
   selector: 'app-sign-up-form',
   templateUrl: './sign-up-form.component.html',
   styleUrls: ['./sign-up-form.component.scss'],
 })
-export class SignUpFormComponent {
-  readonly signUpForm = new FormGroup(
-    {
-      email: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required, Validators.email],
-      }),
-      fullName: new FormControl('', {
-        nonNullable: true,
-        validators: [Validators.required],
-      }),
-      password: new FormControl('', {
-        nonNullable: true,
-        validators: [
-          Validators.required,
-          Validators.pattern(
-            /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
-          ),
-        ],
-      }),
-      confirmPassword: new FormControl('', [Validators.required]),
-      tos: new FormControl(false, [Validators.requiredTrue]),
-    },
-    { validators: FormValidators.mustMatch('password', 'confirmPassword', 8) }
-  );
+export class SignUpFormComponent implements AfterViewInit {
+  @ViewChild('form') public form!: NgForm;
+  public readonly userSuite = userValidations;
+
+  private readonly formValue = signal(new CreateUserDto());
+  private readonly formDirty = signal<boolean | null>(true);
+  private readonly formValid = signal<boolean | null>(true);
+  public readonly vm = computed(() => {
+    return {
+      user: this.formValue(),
+      formValid: this.formValid(),
+      formDirty: this.formDirty(),
+    };
+  });
 
   isLoading = false;
 
   constructor(
     readonly modalController: ModalController,
-    private readonly authService: AuthService,
+    private readonly authService: AuthService
   ) {}
 
-  onSubmit() {
-    this.signUpForm.disable();
-    this.isLoading = true;
-    const { email, fullName, password } = this.signUpForm.getRawValue();
-    this.authService.register({ email, fullName, password }).subscribe({
-      next: (user) => {
-        this.isLoading = false;
-        this.modalController.dismiss({ signedUp: true }, 'user', 'sign-up');
-      },
-      complete: () => {
-        this.isLoading = false;
-        this.signUpForm.enable();
-      },
+  public ngAfterViewInit(): void {
+    this.form?.valueChanges?.subscribe((v) => {
+      this.formValue.update((curr) => new CreateUserDto({ ...curr, ...v }));
     });
+    this.form?.statusChanges?.subscribe(() => {
+      this.formDirty.set(this.form.dirty);
+      this.formValid.set(this.form.valid);
+    });
+  }
+
+  onSubmit() {
+    this.isLoading = true;
+    const newUser = this.formValue();
+    this.authService
+      .register(newUser)
+      .pipe(finalize(() => (this.isLoading = false)))
+      .subscribe({
+        next: () => {
+          this.modalController.dismiss({ signedUp: true }, 'user', 'sign-up');
+        },
+        error: (err) => {
+          // TODO: show toast
+          console.log(err);
+        },
+      });
   }
 }
