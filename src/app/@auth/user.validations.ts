@@ -1,13 +1,13 @@
-import { CreateUserDto } from './user';
+import { CreateUserDto, Credentials } from './user';
 import { test, enforce, create, omitWhen, only } from 'vest';
 
-export const credentialsValidations = create((model: CreateUserDto, field: string) => {
+export const credentialsValidations = create((model: Credentials, field: string) => {
   // only execute validation for this field
   only(field);
   emailValidations(model, 'email');
 
   test(`password`, 'Contraseña es requerido.', () => {
-    enforce(model.passwords.password).isNotBlank();
+    enforce(model.password).isNotBlank();
   });
 }); 
 

@@ -18,6 +18,7 @@ export class AuthService {
     }
   }
 
+  // TODO: Store in Ionic Storage (IndexedDB)
   get accessToken() {
     return localStorage.getItem(this.ACCESS_TOKEN) ?? '';
   }

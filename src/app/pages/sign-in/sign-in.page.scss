@@ -1,0 +1,43 @@
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+ion-img {
+  width: 10rem;
+  margin: 0 auto;
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.social-providers {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+ion-button.social {
+  --border-radius: 50%;
+  --background: #ffffff;
+  --background-activated: #ffffff;
+  --padding-bottom: 10px;
+  --padding-end: 10px;
+  --padding-start: 10px;
+  --padding-top: 10px;
+  --box-shadow: none;
+
+  ion-icon[name='logo-google'] {
+    color: #4285F4;
+  }
+  ion-icon[name='logo-facebook'] {
+    color: #3b5998;
+  }
+    ion-icon[name='logo-apple'] {
+    color: #000000;
+  }
+}

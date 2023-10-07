@@ -34,20 +34,6 @@ ion-grid {
   justify-content: flex-end;
 }
 
-.divider {
-  // font-size: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.divider::before, .divider::after {
-  flex: 1;
-  content: '';
-  padding: 1px;
-  background-color: white;
-  margin: 5px;
-}
-
 ion-button.social {
   --border-radius: 50%;
   --background: #ffffff;
