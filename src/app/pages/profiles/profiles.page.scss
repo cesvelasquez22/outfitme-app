@@ -1,0 +1,36 @@
+ion-content {
+    --background: linear-gradient(to bottom, var(--ion-color-tertiary), var(--ion-color-secondary));
+    // --background: radial-gradient(circle, var(--ion-color-tertiary), var(--ion-color-secondary));
+
+    
+    // --background: #ffffff;
+    // --color: #3880ff;
+    // --keyboard-offset: 0px;
+    // --offset-bottom: 0px;
+    // --offset-top: 0px;
+    // --padding-bottom: 0px;
+    // --padding-end: 0px;
+    // --padding-start: 0px;
+    // --padding-top: 0px;
+}
+
+.profiles-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.profile-avatar {
+    display: grid;
+    place-items: center;
+    width: 8rem;
+    height: 8rem;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    border: 2px solid #d1d5db;
+}
+
+.profile-avatar.dark {
+    border-color: #9ca3af;
+}

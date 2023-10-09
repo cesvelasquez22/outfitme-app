@@ -36,9 +36,13 @@ export class AuthService {
     localStorage.setItem(this.USER, JSON.stringify(user));
   }
 
-  register(user: CreateUserDto) {
+  register({ email, fullName, passwords }: CreateUserDto) {
     return this.httpClient
-      .post<User>(`${environment.api}/auth/register`, user)
+      .post<User>(`${environment.api}/auth/register`, {
+        email,
+        fullName,
+        password: passwords.password,
+      })
       .pipe(
         tap((user) => {
           this.setCredentials(user);
