@@ -7,14 +7,23 @@ import { IonicModule } from '@ionic/angular';
 import { SignInPageRoutingModule } from './sign-in-routing.module';
 
 import { SignInPage } from './sign-in.page';
+import {
+  InputWrapperComponent,
+  FormDirective,
+  FormModelDirective,
+} from '@shared/form-validation';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SignInPageRoutingModule
+    SignInPageRoutingModule,
+
+    InputWrapperComponent,
+    FormDirective,
+    FormModelDirective,
   ],
-  declarations: [SignInPage]
+  declarations: [SignInPage],
 })
 export class SignInPageModule {}

@@ -30,3 +30,25 @@
     font-family: 'Inter var';
     color-scheme: light dark;
 }
+
+.divider-text {
+    // font-size: 30px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .divider-text::before, .divider-text::after {
+    flex: 1;
+    content: '';
+    padding: 1px;
+    background-color: white;
+    margin: 5px;
+  }
+  
+
+ion-loading.custom-loading {
+    // --backdrop-opacity: 0.5;
+    --background: #ffffff;
+    --spinner-color: (var(--ion-color-tertiary));
+    // --width: 100%;
+}
