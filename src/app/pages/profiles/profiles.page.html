@@ -1,12 +1,28 @@
+<ion-header class="ion-no-border">
+  <header #headerEl class="ion-text-center" style="background-color: rgba(var(--ion-color-tertiary-rgb), 0.7);">
+    <img src="assets/logo/lens-text-dark.svg" alt="Outfitme Logo" class="logo">
+  </header>
+</ion-header>
 <ion-content [fullscreen]="true" class="ion-padding">
-  <div class="profiles-grid">
-    <ng-container *ngFor="let profile of profiles; trackBy:trackByFn">
-      <div class="profile-avatar">
-        {{ profile.profileName | shortName }}
-      </div>
-    </ng-container>
-    <div class="profile-avatar">
-      <ion-icon name="add-circle-outline" size="large"></ion-icon>
-    </div>
+  <div class="profiles-container">
+    <section id="title" class="ion-text-center">
+      <h3>Perfiles</h3>
+    </section>
+    <section #profilesEl class="profiles-grid">
+      <ng-container *ngFor="let profile of profiles; trackBy:trackByFn">
+        <div class="profile">
+          <div class="profile-avatar">
+            {{ profile.profileName | shortName }}
+          </div>
+          <div class="name">{{ profile.profileName }}</div>
+        </div>
+      </ng-container>
+    </section>
+    <section class="footer-container ion-text-center">
+      <ion-button id="toggle-profiles" fill="clear">
+        Administrar perfiles
+      </ion-button>
+    </section>
   </div>
 </ion-content>
+

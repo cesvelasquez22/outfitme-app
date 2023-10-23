@@ -1,36 +1,81 @@
-ion-content {
-    --background: linear-gradient(to bottom, var(--ion-color-tertiary), var(--ion-color-secondary));
-    // --background: radial-gradient(circle, var(--ion-color-tertiary), var(--ion-color-secondary));
+@import 'src/styles/breakpoints.scss';
 
-    
-    // --background: #ffffff;
-    // --color: #3880ff;
-    // --keyboard-offset: 0px;
-    // --offset-bottom: 0px;
-    // --offset-top: 0px;
-    // --padding-bottom: 0px;
-    // --padding-end: 0px;
-    // --padding-start: 0px;
-    // --padding-top: 0px;
+ion-content {
+  --background: linear-gradient(
+    to bottom,
+    var(--ion-color-tertiary),
+    var(--ion-color-secondary)
+  );
+}
+
+.logo {
+  width: 8em;
+}
+
+.profiles-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .profiles-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.profile-avatar {
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: flex-start;
+  transition-duration: 0.5s;
+
+  .name {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.5px;
+  }
+
+  .profile-avatar {
     display: grid;
     place-items: center;
     width: 8rem;
     height: 8rem;
     padding: 0.25rem;
-    border-radius: 9999px;
-    border: 2px solid #d1d5db;
+    border: 2px solid var(--ion-color-primary-tint);
+
+    background: linear-gradient(
+      to right,
+      var(--ion-color-primary-shade),
+      var(--ion-color-primary-tint)
+    );
+    border-radius: 50%;
+    box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.329);
+
+    font-size: 1.5em;
+    letter-spacing: 0.5px;
+    line-height: 60px;
+
+    &:hover {
+      background-color: rgb(43, 43, 43);
+      transition-duration: 0.5s;
+    }
+  }
 }
 
 .profile-avatar.dark {
-    border-color: #9ca3af;
+  border-color: #9ca3af;
+}
+
+
+ion-button {
+    --background: transparent;
+    --box-shadow: none;
+    --ripple-color: transparent;
 }
