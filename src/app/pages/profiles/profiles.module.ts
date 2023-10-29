@@ -7,7 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ProfilesPageRoutingModule } from './profiles-routing.module';
 
 import { ProfilesPage } from './profiles.page';
-import { ShortNamePipe } from '@shared/pipes/short-name.pipe';
+import { ShortNamePipe } from '@shared/pipes';
+import { ProfilesService } from './profiles.service';
 
 @NgModule({
   imports: [
@@ -19,5 +20,6 @@ import { ShortNamePipe } from '@shared/pipes/short-name.pipe';
     ShortNamePipe,
   ],
   declarations: [ProfilesPage],
+  providers: [ProfilesService],
 })
 export class ProfilesPageModule {}
