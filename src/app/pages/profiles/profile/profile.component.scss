@@ -1,0 +1,71 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: flex-start;
+    transition-duration: 0.5s;
+  
+    .name {
+      font-size: 0.9em;
+      font-weight: 600;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+  
+    .profile-avatar {
+      display: grid;
+      place-items: center;
+      width: 8rem;
+      height: 8rem;
+      padding: 0.25rem;
+      border: 2px solid var(--ion-color-primary-tint);
+  
+      background: linear-gradient(
+        to right,
+        var(--ion-color-primary-shade),
+        var(--ion-color-primary-tint)
+      );
+      border-radius: 50%;
+      box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.329);
+  
+      font-size: 1.5em;
+      letter-spacing: 0.5px;
+      line-height: 60px;
+  
+      &:hover {
+        background-color: rgb(43, 43, 43);
+        transition-duration: 0.5s;
+      }
+    }
+  }
+  
+  .profile-avatar.editing {
+    position: relative;
+    &::before {
+      border-radius: 50%;
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+  
+    &::after {
+      content: '\270E'; // pencil icon
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 2rem;
+      color: white;
+      z-index: 2;
+    }
+  }
+  
+  .profile-avatar.dark {
+    border-color: #9ca3af;
+  }

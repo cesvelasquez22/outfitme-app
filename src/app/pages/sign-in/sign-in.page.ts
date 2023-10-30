@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '@auth/auth.service';
-import { Credentials } from '@auth/user';
-import { credentialsValidations } from '@auth/user.validations';
+import { AuthService } from '@core/auth';
+import { Credentials, credentialsValidations } from '@core/user';
 import { delay, finalize } from 'rxjs/operators';
 
 @Component({

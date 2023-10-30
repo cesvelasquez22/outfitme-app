@@ -6,11 +6,11 @@ import {
   signal,
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from '@auth/auth.service';
-import { CreateUserDto } from '@auth/user';
+import { AuthService } from 'src/app/@core/auth/auth.service';
+import { CreateUserDto } from 'src/app/@core/user/user';
 import { ModalController } from '@ionic/angular';
 import { finalize } from 'rxjs';
-import { userValidations } from '@auth/user.validations';
+import { userValidations } from 'src/app/@core/user/user.validations';
 
 @Component({
   selector: 'app-sign-up-form',
