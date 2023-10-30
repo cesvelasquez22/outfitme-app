@@ -10,17 +10,15 @@
     </section>
     <section #profilesEl class="profiles-grid">
       <ng-container *ngFor="let profile of profilesService.profiles$ | async; trackBy:trackByFn">
-        <div class="profile">
-          <div class="profile-avatar">
-            {{ profile.profileName | shortName }}
-          </div>
-          <div class="name">{{ profile.profileName }}</div>
-        </div>
+        <app-profile [profile]="profile" [editing]="editing" (click)="onClickProfile(profile)"></app-profile>
       </ng-container>
     </section>
     <section class="footer-container ion-text-center">
-      <ion-button id="toggle-profiles" fill="clear">
-        Administrar perfiles
+      <ion-button id="add-profile" [routerLink]="['/create']">
+        Agregar perfil
+      </ion-button>
+      <ion-button id="toggle-profiles" fill="clear" (click)="editing = !editing">
+        {{ editing ? 'Listo' : 'Administrar perfiles' }}
       </ion-button>
     </section>
   </div>

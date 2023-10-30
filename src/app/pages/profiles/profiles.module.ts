@@ -4,11 +4,15 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilesPageRoutingModule } from './profiles-routing.module';
-
-import { ProfilesPage } from './profiles.page';
 import { ShortNamePipe } from '@shared/pipes';
+
+import { ProfilesPageRoutingModule } from './profiles-routing.module';
+import { ProfilesPage } from './profiles.page';
 import { ProfilesService } from './profiles.service';
+
+import { ProfileDetailComponent } from './detail/profile-detail.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
@@ -16,10 +20,11 @@ import { ProfilesService } from './profiles.service';
     FormsModule,
     IonicModule,
     ProfilesPageRoutingModule,
+    RouterModule,
 
     ShortNamePipe,
   ],
-  declarations: [ProfilesPage],
+  declarations: [ProfilesPage, ProfileDetailComponent, ProfileComponent],
   providers: [ProfilesService],
 })
 export class ProfilesPageModule {}
