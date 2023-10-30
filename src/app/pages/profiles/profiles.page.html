@@ -1,0 +1,26 @@
+<ion-header class="ion-no-border">
+  <header #headerEl class="ion-text-center" style="background-color: rgba(var(--ion-color-tertiary-rgb), 0.7);">
+    <img src="assets/logo/lens-text-dark.svg" alt="Outfitme Logo" class="logo">
+  </header>
+</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="profiles-container">
+    <section id="title" class="ion-text-center">
+      <h3 style="color: white;">Perfiles</h3>
+    </section>
+    <section #profilesEl class="profiles-grid">
+      <ng-container *ngFor="let profile of profilesService.profiles$ | async; trackBy:trackByFn">
+        <app-profile [profile]="profile" [editing]="editing" (click)="onClickProfile(profile)"></app-profile>
+      </ng-container>
+    </section>
+    <section class="footer-container ion-text-center">
+      <ion-button id="add-profile" [routerLink]="['/create']">
+        Agregar perfil
+      </ion-button>
+      <ion-button id="toggle-profiles" fill="clear" (click)="editing = !editing">
+        {{ editing ? 'Listo' : 'Administrar perfiles' }}
+      </ion-button>
+    </section>
+  </div>
+</ion-content>
+

@@ -1,15 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '@core/auth';
+import { Credentials, credentialsValidations } from '@core/user';
+import { delay, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.page.html',
   styleUrls: ['./sign-in.page.scss'],
 })
-export class SignInPage implements OnInit {
+export class SignInPage {
+  public readonly userSuite = credentialsValidations;
+  public user = new Credentials();
 
-  constructor() { }
+  isLoading = false;
+  constructor(
+    private readonly authService: AuthService,
+    private readonly router: Router
+  ) {}
 
-  ngOnInit() {
+  onSubmit() {
+    this.isLoading = true;
+    this.authService
+      .login(this.user)
+      .pipe(
+        finalize(() => (this.isLoading = false)),
+        delay(0)
+      )
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/signed-in-redirect']);
+        },
+        error: (err) => {
+          // TODO: show toast error: "Correo o contraseña incorrectos"
+          console.log(err);
+        },
+      });
   }
-
 }

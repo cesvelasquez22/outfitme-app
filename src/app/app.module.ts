@@ -6,17 +6,22 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthModule } from '@auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './@core/core.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
-    AuthModule,
+    IonicModule.forRoot({
+      mode: 'md',
+      backButtonText: '',
+      backButtonIcon: 'arrow-back-outline',
+      swipeBackEnabled: true,
+    }),
+    IonicStorageModule.forRoot(),
+    CoreModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
