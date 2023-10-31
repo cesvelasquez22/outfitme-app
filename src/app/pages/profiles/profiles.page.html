@@ -9,12 +9,12 @@
       <h3 style="color: white;">Perfiles</h3>
     </section>
     <section #profilesEl class="profiles-grid">
-      <ng-container *ngFor="let profile of profilesService.profiles$ | async; trackBy:trackByFn">
+      <ng-container *ngFor="let profile of profiles; trackBy:trackByFn">
         <app-profile [profile]="profile" [editing]="editing" (click)="onClickProfile(profile)"></app-profile>
       </ng-container>
     </section>
     <section class="footer-container ion-text-center">
-      <ion-button id="add-profile" [routerLink]="['/create']">
+      <ion-button *ngIf="profiles.length < 5" id="add-profile" [routerLink]="['/create']">
         Agregar perfil
       </ion-button>
       <ion-button id="toggle-profiles" fill="clear" (click)="editing = !editing">

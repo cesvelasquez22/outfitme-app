@@ -21,7 +21,6 @@ export class SplashScreenService
                 take(1)
             )
             .subscribe(() => {
-                console.log('SplashScreenService: Hiding');
                 this.hide();
             });
     }

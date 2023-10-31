@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from './user';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class UserService {
   private _user = new BehaviorSubject<Partial<User> | null>(null);
   readonly user$ = this._user.asObservable();

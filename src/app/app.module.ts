@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './@core/core.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { LoadingComponent } from '@shared/loading';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,8 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     }),
     IonicStorageModule.forRoot(),
     CoreModule,
+
+    LoadingComponent,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
