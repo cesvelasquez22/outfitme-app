@@ -3,20 +3,27 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ProfilesPage } from './profiles.page';
 import { ProfileDetailComponent } from './detail/profile-detail.component';
+import { ProfilesGridComponent } from './grid/profiles-grid.component';
 
 const routes: Routes = [
   {
     path: '',
     component: ProfilesPage,
-  },
-  {
-    path: 'create',
-    component: ProfileDetailComponent,
-  },
-  {
-    path: ':id',
-    component: ProfileDetailComponent,
-  },
+    children: [
+      {
+        path: '',
+        component: ProfilesGridComponent,
+      },
+      {
+        path: 'create',
+        component: ProfileDetailComponent,
+      },
+      {
+        path: ':id',
+        component: ProfileDetailComponent,
+      },
+    ]
+  }
 ];
 
 @NgModule({
