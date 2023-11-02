@@ -1,0 +1,32 @@
+.profiles-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+ion-button {
+  --background: transparent;
+  --box-shadow: none;
+  --ripple-color: transparent;
+
+  &#add-profile {
+    --background: var(--ion-color-tertiary);
+    --color: white;
+  }
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}

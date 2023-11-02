@@ -13,6 +13,8 @@ import { ProfilesService } from './profiles.service';
 import { ProfileDetailComponent } from './detail/profile-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RouterModule } from '@angular/router';
+import { ProfilesGridComponent } from './grid/profiles-grid.component';
+import { FormDirective, FormModelDirective, InputWrapperComponent } from '@shared/form-validation';
 
 @NgModule({
   imports: [
@@ -23,8 +25,11 @@ import { RouterModule } from '@angular/router';
     RouterModule,
 
     ShortNamePipe,
+    InputWrapperComponent,
+    FormDirective,
+    FormModelDirective,
   ],
-  declarations: [ProfilesPage, ProfileDetailComponent, ProfileComponent],
+  declarations: [ProfilesPage, ProfileDetailComponent, ProfileComponent, ProfilesGridComponent],
   providers: [ProfilesService],
 })
 export class ProfilesPageModule {}

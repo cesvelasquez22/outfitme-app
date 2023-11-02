@@ -1,0 +1,24 @@
+ion-button {
+    --background: transparent;
+    --box-shadow: none;
+    --ripple-color: transparent;
+}
+
+ion-input {
+    --background: var(--ion-color-secondary);
+    border: 1px solid var(--ion-color-primary-tint);
+    border-radius: 5px;
+    --color: #fff;
+    --placeholder-color: #ddd;
+    --placeholder-opacity: 0.8;
+  
+    --padding-bottom: 10px;
+    --padding-end: 10px;
+    --padding-start: 10px;
+    --padding-top: 10px;
+
+    ::ng-deep label.input-wrapper.sc-ion-input-md {
+        border-radius: 5px;
+    }
+}
+
