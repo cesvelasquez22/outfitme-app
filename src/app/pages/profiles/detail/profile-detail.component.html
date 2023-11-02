@@ -1,1 +1,41 @@
-<p>profile-detail works!</p>
+<div class="form-container">
+    <section class="ion-text-center">
+        <h3 style="color: white;">{{ profileId ? 'Editar' : 'Crear' }} perfil</h3>
+    </section>
+    <form [model]="profile" [suite]="profileSuite"  #profileForm="ngForm" (ngSubmit)="onSubmit()">
+        <ion-grid fixed>
+            <ion-row>
+                <ion-col size="12">
+                    <label inputWrapper>
+                        <ion-input type="text" placeholder="Nombre" name="profileName" [(ngModel)]="profile.profileName"></ion-input>
+                    </label>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="6">
+                    <ion-button type="submit" expand="block" color="primary">
+                        Guardar
+                    </ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button expand="block" color="secondary" style="color: white;" routerLink="/profiles">
+                        Cancelar
+                    </ion-button>
+                </ion-col>  
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button id="remove-alert" expand="block" fill="clear" style="color: white;">
+                        Eliminar
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </form>
+</div>
+
+<ion-alert
+  trigger="error-alert"
+  header="Eliminar usuario"
+  [buttons]="alertButtons"
+></ion-alert>

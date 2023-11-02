@@ -29,9 +29,9 @@ export class ProfilesGridComponent implements OnInit {
   profiles: Profile[] = [];
 
   ngOnInit(): void {
-    this.loadingService.isLoading(true);
+    this.loadingService.show();
     this.profilesService.profiles$
-      .pipe(finalize(() => this.loadingService.isLoading(false)))
+      .pipe(finalize(() => this.loadingService.hide()))
       .subscribe((profiles) => {
         this.profiles = profiles;
       });
