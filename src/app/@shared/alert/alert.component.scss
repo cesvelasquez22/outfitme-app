@@ -1,0 +1,48 @@
+// ion-toast#alert {}
+
+ion-toast.success {
+    --background: var(--ion-color-success-tint);
+    
+    // &::part(button) {
+    //     color: var(--ion-color-success);
+    // }
+
+    &::part(message) {
+        color: var(--ion-color-success);
+    }
+}
+
+ion-toast.warning {
+    --background: var(--ion-color-warning-tint);
+
+    &::part(message) {
+        color: var(--ion-color-warning);
+    }
+}
+
+ion-toast.danger {
+    --background: var(--ion-color-danger-tint);
+
+    &::part(message) {
+        color: var(--ion-color-danger);
+    }
+}
+
+// ion-toast {
+//     --background: #3880ff;
+//     --border-color: #3880ff;
+//     --border-radius: 15px;
+//     --border-style: solid;
+//     --border-width: 8px;
+//     --box-shadow: none;
+//     --button-color: #3880ff;
+//     --color: #3880ff;
+//     --end: 8px;
+//     --height: 42px;
+//     --max-height: 64px;
+//     --max-width: 192px;
+//     --min-height: 24px;
+//     --min-width: 92px;
+//     --start: 8px;
+//     --width: 124px;
+// }
