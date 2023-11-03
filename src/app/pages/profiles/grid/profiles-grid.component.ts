@@ -8,7 +8,7 @@ import {
 import { ProfilesService } from '../profiles.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Profile } from '../profiles.types';
-import { LoadingService } from '@core/services/loading';
+import { LoadingService } from '@shared/loading';
 import { finalize } from 'rxjs';
 
 @Component({

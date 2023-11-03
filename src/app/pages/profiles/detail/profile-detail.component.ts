@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProfilesService } from '../profiles.service';
 import { Profile } from '../profiles.types';
-import { LoadingService } from '@core/services/loading';
+import { LoadingService } from '@shared/loading';
 import { finalize } from 'rxjs';
 import { profileValidations } from '../profile.validations';
 
