@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Profile } from './profiles.types';
-import { StorageService } from '@core/services/storage';
-import { Subject, map, shareReplay } from 'rxjs';
+import { Subject, map } from 'rxjs';
+import { UserService } from '@core/user';
 
 @Injectable()
 export class ProfilesService {
@@ -11,18 +11,14 @@ export class ProfilesService {
   readonly profileDetail$ = this._profile.asObservable();
 
   private readonly http = inject(HttpClient);
-  private readonly storage = inject(StorageService);
+  private readonly userService = inject(UserService);
 
-  readonly profiles$ = this.http
-    .get<Profile[]>(`${environment.api}/profiles`)
-    .pipe(shareReplay(1));
-
-  private readonly PROFILE_KEY = 'profile';
+  readonly profiles$ = this.http.get<Profile[]>(`${environment.api}/profiles`);
 
   setActiveProfile(profile: Profile) {
-    this.storage.set(this.PROFILE_KEY, profile);
+    this.userService.profile = profile;
   }
-  
+
   getProfileById(id: number) {
     return this.http
       .get<Profile>(`${environment.api}/profiles/${id}`)
@@ -30,11 +26,15 @@ export class ProfilesService {
   }
 
   createProfile({ profileName }: Profile) {
-    return this.http.post<Profile>(`${environment.api}/profiles`, { profileName });
+    return this.http.post<Profile>(`${environment.api}/profiles`, {
+      profileName,
+    });
   }
 
   updateProfile({ id, profileName }: Profile) {
-    return this.http.patch<Profile>(`${environment.api}/profiles/${id}`, { profileName });
+    return this.http.patch<Profile>(`${environment.api}/profiles/${id}`, {
+      profileName,
+    });
   }
 
   removeProfile(id: number) {

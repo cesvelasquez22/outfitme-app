@@ -3,35 +3,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { authGuard, profileGuard } from '@core/guards';
 
 const routes: Routes = [
+  { path: '', redirectTo: '', pathMatch: 'full', },
   // Redirect signed in users to the home page
   { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: '' },
-  {
-    path: '',
-    canActivate: [authGuard],
-    children: [
-      {
-        path: 'profiles',
-        loadChildren: () =>
-          import('@pages/profiles').then((m) => m.ProfilesPageModule),
-      },
-    ],
-  },
-  {
-    path: '',
-    canActivate: [authGuard, profileGuard],
-    children: [
-      {
-        path: '',
-        loadChildren: () =>
-          import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
-      },
-    ],
-  },
-  {
-    path: '',
-    redirectTo: '',
-    pathMatch: 'full',
-  },
   // No Auth routes
   {
     path: 'sign-up',
@@ -43,11 +17,34 @@ const routes: Routes = [
     loadChildren: () =>
       import('@pages/sign-in').then((m) => m.SignInPageModule),
   },
+  // Auth routes
+  {
+    path: '',
+    canActivate: [profileGuard, authGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
+      },
+    ],
+  },
+  {
+    path: '',
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'profiles',
+        loadChildren: () =>
+          import('@pages/profiles').then((m) => m.ProfilesPageModule),
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules,  }),
   ],
   exports: [RouterModule],
 })
