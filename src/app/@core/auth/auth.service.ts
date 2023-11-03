@@ -6,6 +6,7 @@ import { tap } from 'rxjs';
 
 @Injectable()
 export class AuthService {
+  private _authenticated: boolean = false;
   private readonly ACCESS_TOKEN = 'accessToken';
 
   private readonly http = inject(HttpClient);
@@ -41,12 +42,47 @@ export class AuthService {
       })
       .pipe(
         tap((user) => {
+          this._authenticated = true;
           this.setCredentials(user);
         })
       );
   }
 
+  logout() {
+    localStorage.clear();
+  }
+
+  /**
+     * Check the authentication status
+     */
+  async check()
+  {
+      // Check if the user is logged in
+      if ( this._authenticated )
+      {
+          return true;
+      }
+
+      // Check the access token availability
+      if ( !this.accessToken )
+      {
+          return false;
+      }
+
+      return true;
+
+      // // Check the access token expire date
+      // if ( AuthUtils.isTokenExpired(this.accessToken) )
+      // {
+      //     return of(false);
+      // }
+
+      // If the access token exists and it didn't expire, sign in using it
+      // return this.signInUsingToken();
+  }
+
   private setCredentials({ token, ...user }: User) {
+    console.log('setCredentials', token, user);
     this.accessToken = token;
     this.userService.user = user;
   }

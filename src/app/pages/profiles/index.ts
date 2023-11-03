@@ -1,1 +1,2 @@
-export { ProfilesPageModule } from "./profiles.module";
+export * from "./profiles.module";
+export * from "./profiles.types";
