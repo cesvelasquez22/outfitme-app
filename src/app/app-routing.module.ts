@@ -3,9 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { authGuard, profileGuard } from '@core/guards';
 
 const routes: Routes = [
-  { path: '', redirectTo: '', pathMatch: 'full', },
-  // Redirect signed in users to the home page
-  { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: '' },
   // No Auth routes
   {
     path: 'sign-up',
@@ -40,6 +37,9 @@ const routes: Routes = [
       },
     ],
   },
+  { path: '', redirectTo: '/home', pathMatch: 'full', },
+  // Redirect signed in users to the home page
+  { path: 'signed-in-redirect', pathMatch: 'full', redirectTo: '/profiles' },
 ];
 
 @NgModule({
