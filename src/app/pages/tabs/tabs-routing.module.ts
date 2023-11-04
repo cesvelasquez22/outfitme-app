@@ -20,6 +20,10 @@ const routes: Routes = [
         path: 'wardrobe',
         loadChildren: () => import('../wardrobe/wardrobe.module').then( m => m.WardrobePageModule)
       },
+      {
+        path: 'account',
+        loadChildren: () => import('../account/account.module').then( m => m.AccountPageModule)
+      },
     ],
   }
 ];
