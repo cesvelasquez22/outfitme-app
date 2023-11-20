@@ -11,7 +11,6 @@
       <label inputWrapper>
         <ion-input type="password" placeholder="Contraseña" name="password" [(ngModel)]="user.password"></ion-input>
       </label>
-      <!-- TODO: Show Not a Member? Sign Up -->
       <!-- TODO: Show Forgot Password -->
 
       <ion-button type="submit" id="open-loading" color="secondary" [disabled]="loginForm.invalid">Ingresar</ion-button>
@@ -30,6 +29,10 @@
           <ion-icon slot="icon-only" name="logo-apple"></ion-icon>
         </ion-button>
       </div>
+
+      <h6 style="text-align: center;">
+        ¿Aún no eres miembro? <a [routerLink]="['/sign-up']" routerLinkActive="router-link-active" style="text-decoration: none; color: var(--ion-color-secondary);">Registrate</a>
+      </h6>
     </form>
   </div>
 </ion-content>

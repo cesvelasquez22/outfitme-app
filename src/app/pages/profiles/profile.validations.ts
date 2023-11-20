@@ -5,7 +5,7 @@ export const profileValidations = create((model: Profile, field: string) => {
   // only execute validation for this field
   only(field);
 
-  test(`profileName`, 'Contraseña es requerido.', () => {
+  test(`profileName`, 'Nombre de perfil es requerido.', () => {
     enforce(model.profileName).isNotBlank();
   });
 });

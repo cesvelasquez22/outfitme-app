@@ -82,7 +82,6 @@ export class AuthService {
   }
 
   private setCredentials({ token, ...user }: User) {
-    console.log('setCredentials', token, user);
     this.accessToken = token;
     this.userService.user = user;
   }
